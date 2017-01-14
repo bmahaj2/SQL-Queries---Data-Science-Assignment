@@ -1,0 +1,50 @@
+If classes can belong to more than one area (e.g., it can be both a theory and systems class), we need to break the table Dim_type into three tables to remove 
+redundancy. 
+
+For example consider the Dim_Type table with the following entries.
+
+ID		Type			Area 
+1		Course			ai
+2		Seminar			Systems
+2		Seminar			Theory	
+3 		Independent_Study       ai
+
+So here in the above table for ID=2 type is seminar and Area is both systems and Theory. So there is redundancy in the table. So to remove redundancy we divide it
+into 3 three tables as follows
+
+ID		Type			                    ID	         Area                                                  Type_ID       Area_ID
+1		Course			  	            10           ai                                                       1		10
+2		Seminar			 	            20           Systems                                                  2  		20
+2		Seminar				            30	         Theory						          2		30
+3 		Independent_Study                                                                                                 3             10
+
+
+So we get Three relations
+
+Dim_Type1(
+ID int,
+Type text
+)
+
+
+Dim_Area(
+ID int,
+Area text
+)
+
+
+Type_area(
+Type_ID int,
+Area_ID int
+)
+
+
+
+   
+
+
+	
+
+
+
+
